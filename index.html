@@ -354,7 +354,7 @@
                 <h1><img src="cerebria_logo_full.png" alt="CerebrIA"><br>RAG inteligente y autónomo</h1>
                 <p>Motor de búsqueda semántica + IA conversacional sobre tus documentos. Todo local, con sincronización automática, múltiples dominios y evaluación de calidad integrada.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary" id="primaryAction"><i class="fas fa-rocket"></i> Probar ahora</a>
+                    <a href="#" class="btn-primary" id="primaryAction"><i class="fas fa-download"></i> Descargar gratis</a>
                     <a href="#features" class="btn-secondary"><i class="fas fa-cubes"></i> Descubre más</a>
                 </div>
                 <p style="margin-top: 24px; font-size: 0.85rem;"><i class="fas fa-key"></i> BYO OpenAI Key o usa Ollama local · Sin costes ocultos</p>
@@ -471,7 +471,7 @@
                     <span class="tech-badge" style="background: #2A5298; color:white;">Serilog</span>
                 </div>
                 <div style="margin-top: 40px;">
-                    <a href="#" class="btn-primary" style="background: white; color:#1E3C72;" id="bottomDownload"><i class="fab fa-github"></i> Repositorio y descarga (próximamente)</a>
+                    <a href="#" class="btn-primary" style="background: white; color:#1E3C72;" id="bottomDownload"><i class="fab fa-github"></i> Descargar última versión</a>
                 </div>
             </div>
         </div>
@@ -505,12 +505,31 @@
 </footer>
 
 <script>
-    function showInfo() {
-        alert("🧠 CerebrIA está en fase de lanzamiento abierto.\n\nPróximamente podrás descargar la aplicación nativa (Windows x64).\n\n✅ Características reales:\n- Ingesta de PDF, Word, Markdown\n- Pipeline RAG de 6 pasos\n- Watchdog + sincronización automática\n- Evaluación LLM-as-Judge\n- Modo agéntico y chat con contexto\n- BYO OpenAI Key u Ollama local");
+    async function downloadLatestRelease(e) {
+        e.preventDefault();
+        const btn = e.currentTarget;
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Obteniendo release...';
+        btn.style.pointerEvents = 'none';
+        try {
+            const res = await fetch('https://api.github.com/repos/JavierFrauca/cerebria/releases/latest');
+            if (!res.ok) throw new Error('No se pudo obtener la release');
+            const data = await res.json();
+            if (data.assets && data.assets.length > 0) {
+                window.location.href = data.assets[0].browser_download_url;
+            } else {
+                window.open(data.html_url, '_blank');
+            }
+        } catch (err) {
+            window.open('https://github.com/JavierFrauca/cerebria/releases/latest', '_blank');
+        } finally {
+            btn.innerHTML = originalHTML;
+            btn.style.pointerEvents = '';
+        }
     }
-    document.getElementById('primaryAction').addEventListener('click', (e) => { e.preventDefault(); showInfo(); });
-    document.getElementById('fakeDownloadBtn').addEventListener('click', (e) => { e.preventDefault(); showInfo(); });
-    document.getElementById('bottomDownload').addEventListener('click', (e) => { e.preventDefault(); showInfo(); });
+    document.getElementById('primaryAction').addEventListener('click', downloadLatestRelease);
+    document.getElementById('fakeDownloadBtn').addEventListener('click', downloadLatestRelease);
+    document.getElementById('bottomDownload').addEventListener('click', downloadLatestRelease);
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
