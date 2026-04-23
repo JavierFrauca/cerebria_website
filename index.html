@@ -4,330 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>CerebrIA · RAG inteligente local y multidominio</title>
+    <meta name="description" content="CerebrIA: El motor RAG local más avanzado. Privacidad total, sincronización automática y razonamiento de 6 pasos para tus documentos.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #fafcff;
-            color: #1a2c3e;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
-        .navbar {
-            padding: 16px 0;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #e2edf2;
-        }
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 44px;
-            width: auto;
-            transition: transform 0.2s ease;
-        }
-        .logo:hover img {
-            transform: scale(1.02);
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #2c3e50;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #2A5298;
-        }
-        .btn-outline-light {
-            border: 1.5px solid #2A5298;
-            background: transparent;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            color: #2A5298;
-            transition: 0.2s;
-        }
-        .btn-outline-light:hover {
-            background: #2A5298;
-            color: white;
-        }
-
-        .btn-primary {
-            background: #1E3C72;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            background: #0f2b4f;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(30,60,114,0.2);
-        }
-        .btn-secondary {
-            background: white;
-            border: 1.5px solid #cbd5e1;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            color: #1e2f3e;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-secondary:hover {
-            border-color: #2A5298;
-            background: #f8fafc;
-        }
-
-        .hero {
-            padding: 80px 0 60px 0;
-        }
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 48px;
-        }
-        .hero-content {
-            flex: 1;
-        }
-        .hero-badge {
-            background: #e9f0f9;
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1E3C72;
-            margin-bottom: 24px;
-        }
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #1E3C72, #2A5298, #3b6cb0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #2c4b6e;
-            max-width: 550px;
-            margin-bottom: 32px;
-        }
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .hero-visual {
-            flex: 1;
-            background: linear-gradient(145deg, #eef3fc, #ffffff);
-            border-radius: 48px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.1);
-            border: 1px solid rgba(42,82,152,0.15);
-        }
-        .visual-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .visual-card {
-            background: white;
-            border-radius: 24px;
-            padding: 12px 18px;
-            box-shadow: 0 8px 14px rgba(0,0,0,0.02);
-            border: 1px solid #e2edf2;
-            font-weight: 500;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-        .section-header {
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto 60px auto;
-        }
-        .section-header h2 {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 32px;
-        }
-        .feature-card {
-            background: white;
-            border-radius: 32px;
-            padding: 28px 24px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-            border: 1px solid #eef2f8;
-            transition: all 0.2s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-6px);
-            border-color: #cbdde9;
-        }
-        .feature-icon {
-            background: #eef4ff;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            margin-bottom: 24px;
-            font-size: 28px;
-            color: #1E3C72;
-        }
-        .tech-badge {
-            background: #e9f0f9;
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-            margin: 4px;
-        }
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
-        }
-        .step-item {
-            background: white;
-            border-radius: 28px;
-            padding: 32px 24px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            border: 1px solid #eef2f8;
-        }
-        .step-number {
-            background: #1E3C72;
-            color: white;
-            width: 42px;
-            height: 42px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 60px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        .metrics-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        .metric-card {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 160px;
-            border: 1px solid #e2edf2;
-        }
-        footer {
-            background: #0f1a24;
-            color: #cbdbe0;
-            padding: 48px 0 32px;
-            margin-top: 40px;
-        }
-        .footer-flex {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 32px;
-        }
-        .footer-links a {
-            color: #b9c8e8;
-            text-decoration: none;
-            margin-right: 24px;
-            transition: 0.2s;
-        }
-        .footer-links a:last-child {
-            margin-right: 0;
-        }
-        .footer-links a:hover {
-            color: white;
-        }
-        .copyright {
-            text-align: center;
-            margin-top: 48px;
-            font-size: 0.85rem;
-            border-top: 1px solid #1e2f3c;
-            padding-top: 24px;
-        }
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.3rem; }
-            .hero-grid { flex-direction: column; }
-            .footer-flex { flex-direction: column; align-items: center; text-align: center; }
-            .footer-links a { margin: 0 12px; }
-        }
-    </style>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -354,7 +41,7 @@
                 <h1><img src="cerebria_logo_full.png" alt="CerebrIA"><br>RAG inteligente y autónomo</h1>
                 <p>Motor de búsqueda semántica + IA conversacional sobre tus documentos. Todo local, con sincronización automática, múltiples dominios y evaluación de calidad integrada.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary" id="primaryAction"><i class="fas fa-download"></i> Descargar gratis</a>
+                    <a href="#" class="btn-primary" id="primaryAction"><i class="fas fa-rocket"></i> ¡Próximamente!</a>
                     <a href="#features" class="btn-secondary"><i class="fas fa-cubes"></i> Descubre más</a>
                 </div>
                 <p style="margin-top: 24px; font-size: 0.85rem;"><i class="fas fa-key"></i> BYO OpenAI Key o usa Ollama local · Sin costes ocultos</p>
@@ -471,7 +158,7 @@
                     <span class="tech-badge" style="background: #2A5298; color:white;">Serilog</span>
                 </div>
                 <div style="margin-top: 40px;">
-                    <a href="#" class="btn-primary" style="background: white; color:#1E3C72;" id="bottomDownload"><i class="fab fa-github"></i> Descargar última versión</a>
+                    <a href="#" class="btn-primary" style="background: white; color:#1E3C72;" id="bottomDownload"><i class="fas fa-clock"></i> ¡Disponible en breve!</a>
                 </div>
             </div>
         </div>
@@ -504,44 +191,19 @@
     </div>
 </footer>
 
-<script>
-    async function downloadLatestRelease(e) {
-        e.preventDefault();
-        const btn = e.currentTarget;
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Obteniendo release...';
-        btn.style.pointerEvents = 'none';
-        try {
-            const res = await fetch('https://api.github.com/repos/JavierFrauca/cerebria/releases/latest');
-            if (!res.ok) throw new Error('No se pudo obtener la release');
-            const data = await res.json();
-            if (data.assets && data.assets.length > 0) {
-                window.location.href = data.assets[0].browser_download_url;
-            } else {
-                window.open(data.html_url, '_blank');
-            }
-        } catch (err) {
-            window.open('https://github.com/JavierFrauca/cerebria/releases/latest', '_blank');
-        } finally {
-            btn.innerHTML = originalHTML;
-            btn.style.pointerEvents = '';
-        }
-    }
-    document.getElementById('primaryAction').addEventListener('click', downloadLatestRelease);
-    document.getElementById('fakeDownloadBtn').addEventListener('click', downloadLatestRelease);
-    document.getElementById('bottomDownload').addEventListener('click', downloadLatestRelease);
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#") return;
-            if (href.startsWith("#") && href !== "#") {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-</script>
+<!-- Modal "Coming Soon" -->
+<div class="modal-overlay" id="comingSoonModal">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+        <div class="modal-icon">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <h2>¡Casi listo!</h2>
+        <p>Estamos ultimando los detalles para que disfrutes de la mejor experiencia RAG local. CerebrIA estará disponible muy pronto.</p>
+        <button class="btn-primary btn-modal" id="acceptModal">¡Entendido, avisadme!</button>
+    </div>
+</div>
+
+<script src="script.js" defer></script>
 </body>
 </html>
