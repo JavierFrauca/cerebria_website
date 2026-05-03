@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>CerebrIA · RAG inteligente local y multidominio</title>
-    <meta name="description" content="CerebrIA: El motor RAG local más avanzado. Privacidad total, sincronización automática y razonamiento de 6 pasos para tus documentos.">
+    <meta name="description" content="CerebrIA: Motor RAG local con soporte para OpenAI, Claude, DeepSeek y Ollama. Privacidad total, sincronización automática y razonamiento de 6 pasos para tus documentos.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,6 +25,7 @@
         </a>
         <div class="nav-links">
             <a href="#features">Características</a>
+            <a href="#providers">Proveedores</a>
             <a href="#ragengine">Motor RAG</a>
             <a href="#syncwatch">Sincronización</a>
             <a href="#" class="btn-outline-light" id="fakeDownloadBtn"><i class="fas fa-download"></i> Descargar gratis</a>
@@ -44,7 +45,7 @@
                     <a href="#" class="btn-primary" id="primaryAction"><i class="fas fa-rocket"></i> ¡Próximamente!</a>
                     <a href="#features" class="btn-secondary"><i class="fas fa-cubes"></i> Descubre más</a>
                 </div>
-                <p style="margin-top: 24px; font-size: 0.85rem;"><i class="fas fa-key"></i> BYO OpenAI Key o usa Ollama local · Sin costes ocultos</p>
+                <p style="margin-top: 24px; font-size: 0.85rem;"><i class="fas fa-key"></i> Compatible con OpenAI, Claude, DeepSeek y Ollama · Sin costes ocultos</p>
             </div>
             <div class="hero-visual">
                 <i class="fas fa-database" style="font-size: 3rem;"></i>
@@ -53,7 +54,8 @@
                     <div class="visual-card"><i class="fab fa-wordpress"></i> Word</div>
                     <div class="visual-card"><i class="fab fa-markdown"></i> Markdown</div>
                 </div>
-                <p style="margin-top: 24px;"><i class="fas fa-chart-line"></i> Evaluación automática · Faithfulness · Relevancy</p>
+                <p style="margin-top: 20px; font-size: 0.85rem;"><i class="fas fa-layer-group"></i> 4 proveedores LLM · 4 proveedores de embeddings</p>
+                <p style="margin-top: 8px;"><i class="fas fa-chart-line"></i> Evaluación automática · Faithfulness · Relevancy</p>
             </div>
         </div>
     </section>
@@ -66,30 +68,158 @@
                 <p>Ingesta, organización y consulta inteligente con arquitectura profesional</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-file-alt"></i></div><h3>Múltiples formatos</h3><p>PDF, Word (.docx), Markdown. Chunking inteligente con tamaño y solapamiento configurables.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tags"></i></div><h3>Dominios y etiquetas</h3><p>Organización jerárquica. Asignación automática mediante IA y búsqueda semántica por categorías.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-robot"></i></div><h3>Modo agéntico</h3><p>El LLM usa herramientas integradas: <code>&lt;&lt;SEARCH&gt;&gt;</code>, <code>&lt;&lt;READ_CHUNK&gt;&gt;</code> y más. Hasta 5 rondas por consulta.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-simple"></i></div><h3>Evaluación LLM-as-Judge</h3><p>Métricas automáticas: Faithfulness, Relevancy, Context Precision. Historial por sesión.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-sync-alt"></i></div><h3>Watchdog + Task Scheduler</h3><p>Sincronización continua de carpetas vigiladas. Modo headless <code>--sync</code> para programación automática.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>Pipeline RAG de 6 pasos</h3><p>Descomponer → Buscar → Reformular → Sintetizar → Revisar → Completar. Precisión máxima.</p></div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Múltiples formatos</h3>
+                    <p>PDF, Word (.docx), Markdown. Chunking inteligente con tamaño y solapamiento configurables.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                    <h3>Dominios y etiquetas</h3>
+                    <p>Organización jerárquica. Asignación automática mediante IA y búsqueda semántica por categorías.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Modo agéntico</h3>
+                    <p>El LLM usa herramientas integradas: <code>&lt;&lt;SEARCH&gt;&gt;</code>, <code>&lt;&lt;READ_CHUNK&gt;&gt;</code> y más. Hasta 5 rondas por consulta.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>Evaluación LLM-as-Judge</h3>
+                    <p>Métricas automáticas: Faithfulness, Relevancy, Context Precision. Historial completo por sesión.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Watchdog + Task Scheduler</h3>
+                    <p>Sincronización continua de carpetas vigiladas. Modo headless <code>--sync</code> para programación automática.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Pipeline RAG de 6 pasos</h3>
+                    <p>Descomponer → Buscar → Reformular → Sintetizar → Revisar → Completar. Los pasos 5 y 6 se activan con el modo agéntico.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-history"></i></div>
+                    <h3>Historial y sesiones</h3>
+                    <p>Sesiones persistentes con atribución de fuentes y puntuación de similitud. Exportación a Markdown y PDF.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-plug"></i></div>
+                    <h3>Multi-proveedor</h3>
+                    <p>OpenAI, Claude, DeepSeek y Ollama. Cambia de LLM o de proveedor de embeddings en cualquier momento desde configuración.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Proveedores -->
+    <section id="providers" class="section" style="background: #f5f9fe; border-radius: 48px; margin: 0 24px 40px 24px; padding: 60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-plug" style="margin-right: 12px;"></i> Elige tu stack de IA</h2>
+                <p>Combina libremente LLM y embeddings de distintos proveedores. Cambia de opción en cualquier momento sin necesidad de reingestión de documentos.</p>
+            </div>
+
+            <h3 class="providers-subtitle">Modelos de lenguaje</h3>
+            <div class="providers-grid">
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#10a37f22; color:#10a37f;"><i class="fas fa-robot"></i></div>
+                    <h4>OpenAI</h4>
+                    <p><code>gpt-4.1-mini</code> por defecto. Compatible con cualquier modelo de la API de OpenAI.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#d97b4b22; color:#d97b4b;"><i class="fas fa-brain"></i></div>
+                    <h4>Claude · Anthropic</h4>
+                    <p><code>claude-sonnet-4-6</code> por defecto. Ideal para razonamiento complejo y documentación técnica.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#4c6ef522; color:#4c6ef5;"><i class="fas fa-microchip"></i></div>
+                    <h4>DeepSeek</h4>
+                    <p><code>deepseek-chat</code>. Alto rendimiento a coste reducido, ideal para consultas en volumen.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#1E3C7222; color:#1E3C72;"><i class="fas fa-server"></i></div>
+                    <h4>Ollama · Local</h4>
+                    <p>Cualquier modelo compatible con Ollama. Inferencia 100% local, sin clave API ni coste por token.</p>
+                </div>
+            </div>
+
+            <h3 class="providers-subtitle" style="margin-top: 48px;">Proveedores de embeddings</h3>
+            <div class="providers-grid">
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#10a37f22; color:#10a37f;"><i class="fas fa-vector-square"></i></div>
+                    <h4>OpenAI Embeddings</h4>
+                    <p><code>text-embedding-3-small</code> · 1 536 dims. Equilibrio óptimo entre calidad y coste.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#7c3aed22; color:#7c3aed;"><i class="fas fa-satellite-dish"></i></div>
+                    <h4>Voyage AI</h4>
+                    <p><code>voyage-3</code> · 1 024 dims. Tres modelos disponibles (<code>lite</code>, <code>voyage-3</code>, <code>large</code>). Recomendado junto a Claude.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#4c6ef522; color:#4c6ef5;"><i class="fas fa-cubes"></i></div>
+                    <h4>DeepSeek Embeddings</h4>
+                    <p>1 024 dimensiones. Ideal para un stack uniforme con DeepSeek como LLM, a coste mínimo.</p>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-icon" style="background:#1E3C7222; color:#1E3C72;"><i class="fas fa-hdd"></i></div>
+                    <h4>Ollama · Local</h4>
+                    <p>Cualquier modelo de embeddings servido por Ollama. Detección automática de dimensiones. Privacidad total.</p>
+                </div>
+            </div>
+
+            <p style="text-align:center; margin-top:32px; color:#4a6080; font-size:0.92rem;">
+                <i class="fas fa-info-circle"></i> LLM y embeddings son independientes: puedes usar Claude como LLM y Voyage AI como embeddings simultáneamente.
+            </p>
+        </div>
+    </section>
+
     <!-- Motor RAG detallado -->
-    <section id="ragengine" class="section" style="background: #f5f9fe; border-radius: 48px; margin: 0 24px 40px 24px; padding: 60px 0;">
+    <section id="ragengine" class="section">
         <div class="container">
             <div class="section-header">
                 <h2><i class="fas fa-cogs" style="margin-right: 12px;"></i> Razonamiento humano de 6 pasos</h2>
-                <p>Cada consulta sigue un pipeline avanzado para respuestas precisas y fundamentadas</p>
+                <p>Cada consulta sigue un pipeline avanzado para respuestas precisas y fundamentadas. Los pasos 5 y 6 se activan con el modo agéntico habilitado.</p>
             </div>
             <div class="steps">
-                <div class="step-item"><div class="step-number">1</div><i class="fas fa-code-branch"></i><h3>Descomponer</h3><p>El LLM genera sub-queries específicas a partir de la pregunta original.</p></div>
-                <div class="step-item"><div class="step-number">2</div><i class="fas fa-search"></i><h3>Buscar</h3><p>Búsqueda semántica en Qdrant con filtrado por dominio/etiqueta.</p></div>
-                <div class="step-item"><div class="step-number">3</div><i class="fas fa-undo-alt"></i><h3>Reformular</h3><p>Si los resultados son débiles, se reformula la query y se reintenta.</p></div>
-                <div class="step-item"><div class="step-number">4</div><i class="fas fa-cogs"></i><h3>Sintetizar</h3><p>Generación de respuesta coherente con todo el material recuperado.</p></div>
-                <div class="step-item"><div class="step-number">5</div><i class="fas fa-clipboard-list"></i><h3>Revisar</h3><p>Compara respuesta con el plan original para detectar huecos.</p></div>
-                <div class="step-item"><div class="step-number">6</div><i class="fas fa-check-double"></i><h3>Completar</h3><p>Búsqueda específica adicional y regeneración final si es necesario.</p></div>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-code-branch"></i>
+                    <h3>Descomponer</h3>
+                    <p>El LLM genera sub-queries específicas a partir de la pregunta original.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-search"></i>
+                    <h3>Buscar</h3>
+                    <p>Búsqueda semántica en Qdrant con filtrado por dominio/etiqueta.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-undo-alt"></i>
+                    <h3>Reformular</h3>
+                    <p>Si los resultados son débiles, se reformula la query y se reintenta.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-cogs"></i>
+                    <h3>Sintetizar</h3>
+                    <p>Generación de respuesta coherente con todo el material recuperado.</p>
+                </div>
+                <div class="step-item step-item--agent">
+                    <div class="step-number step-number--agent">5</div>
+                    <span class="step-agent-badge">Modo agéntico</span>
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Revisar</h3>
+                    <p>Compara la respuesta con el plan original para detectar huecos de información.</p>
+                </div>
+                <div class="step-item step-item--agent">
+                    <div class="step-number step-number--agent">6</div>
+                    <span class="step-agent-badge">Modo agéntico</span>
+                    <i class="fas fa-check-double"></i>
+                    <h3>Completar</h3>
+                    <p>Búsqueda específica adicional y regeneración final si se detectan huecos.</p>
+                </div>
             </div>
             <div class="metrics-grid">
                 <div class="metric-card"><i class="fas fa-microchip"></i><h3>Qdrant vector DB</h3><p>Búsqueda sub-milisegundo</p></div>
@@ -112,7 +242,7 @@
                     <div style="flex:1; min-width: 240px; background: white; border-radius: 32px; padding: 24px; text-align: center;">
                         <i class="fas fa-eye" style="font-size: 2.5rem; color:#1E3C72;"></i>
                         <h3>Watchdog en tiempo real</h3>
-                        <p>Detección automática de nuevos ficheros, modificaciones y eliminaciones. Sin duplicados gracias a hash.</p>
+                        <p>Detección automática de nuevos ficheros, modificaciones y eliminaciones. Sin duplicados gracias a hash SHA-256.</p>
                     </div>
                     <div style="flex:1; min-width: 240px; background: white; border-radius: 32px; padding: 24px; text-align: center;">
                         <i class="fas fa-calendar-alt" style="font-size: 2.5rem; color:#1E3C72;"></i>
@@ -137,9 +267,21 @@
                 <p>Refinamiento inteligente para OCR ruidoso y resúmenes automáticos</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><h3>Refinamiento automático</h3><p>Modos: Off / Auto (solo ruidosos) / Always. Detección de ruido mediante heurísticas LLM.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-chess-board"></i></div><h3>Chunking avanzado</h3><p>Tamaño 800 caracteres, overlap 150. Limpieza de saltos de línea excesivos y normalización.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-simple"></i></div><h3>Evaluación de calidad</h3><p>Puntuación de ruido (umbral 0.40). Opción de saltar summarización en docs refinados.</p></div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Refinamiento automático</h3>
+                    <p>Modos: Off / Auto (solo ruidosos) / Always. Detección de ruido mediante heurísticas LLM con umbral configurable (0.40).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chess-board"></i></div>
+                    <h3>Chunking avanzado</h3>
+                    <p>Tamaño 2 000 caracteres, overlap 300. Limpieza de saltos de línea excesivos y normalización de texto.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>Evaluación de calidad</h3>
+                    <p>Puntuación de ruido (umbral 0.40). Opción de saltar summarización en documentos ya refinados.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -150,12 +292,17 @@
             <div style="background: #1E2F3E; border-radius: 48px; padding: 48px 32px; text-align: center; color: white;">
                 <i class="fas fa-laptop-code" style="font-size: 2.5rem; margin-bottom: 16px;"></i>
                 <h2 style="color: white; margin-bottom: 16px;">Listo para usar en tu entorno</h2>
-                <p style="max-width: 700px; margin: 0 auto 32px auto;">Aplicación de escritorio con interfaz web en <code style="background: #2c4b6e; padding: 4px 10px; border-radius: 20px;">http://localhost:5050</code>. Incluye Qdrant embebido, sin dependencias externas (excepto opcionalmente OpenAI/Ollama).</p>
+                <p style="max-width: 700px; margin: 0 auto 32px auto;">Aplicación de escritorio con interfaz web en <code style="background: #2c4b6e; padding: 4px 10px; border-radius: 20px;">http://localhost:5050</code>. Incluye Qdrant embebido, sin dependencias externas. Compatible también con instancias Qdrant remotas.</p>
                 <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
                     <span class="tech-badge" style="background: #2A5298; color:white;">.NET 10.0</span>
                     <span class="tech-badge" style="background: #2A5298; color:white;">Blazor Server</span>
                     <span class="tech-badge" style="background: #2A5298; color:white;">Qdrant</span>
                     <span class="tech-badge" style="background: #2A5298; color:white;">Serilog</span>
+                    <span class="tech-badge" style="background: #10a37f; color:white;">OpenAI</span>
+                    <span class="tech-badge" style="background: #c0714a; color:white;">Claude</span>
+                    <span class="tech-badge" style="background: #4c6ef5; color:white;">DeepSeek</span>
+                    <span class="tech-badge" style="background: #7c3aed; color:white;">Voyage AI</span>
+                    <span class="tech-badge" style="background: #374151; color:white;">Ollama</span>
                 </div>
                 <div style="margin-top: 40px;">
                     <a href="#" class="btn-primary" style="background: white; color:#1E3C72;" id="bottomDownload"><i class="fas fa-clock"></i> ¡Disponible en breve!</a>
@@ -178,6 +325,7 @@
             <div class="footer-links">
                 <a href="#">Inicio</a>
                 <a href="#features">Características</a>
+                <a href="#providers">Proveedores</a>
                 <a href="#ragengine">Motor RAG</a>
                 <a href="#syncwatch">Sincronización</a>
                 <a href="#">Documentación</a>
@@ -185,7 +333,7 @@
             </div>
         </div>
         <div class="copyright">
-            <i class="fas fa-lock-open"></i> Código abierto · BYO OpenAI Key o Ollama local · Sin tracking · Privacidad por diseño<br>
+            <i class="fas fa-lock-open"></i> Código abierto · OpenAI · Claude · DeepSeek · Voyage AI · Ollama · Sin tracking · Privacidad por diseño<br>
             © 2025 CerebrIA
         </div>
     </div>
