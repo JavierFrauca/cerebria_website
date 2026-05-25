@@ -47,7 +47,7 @@ if (modalOverlay) {
     });
 }
 
-// Reemplazamos la acciÃ³n de descarga por el popup de Hype
+// Botones de descarga → descarga real desde GitHub Releases
 const downloadButtons = [
     document.getElementById('primaryAction'),
     document.getElementById('fakeDownloadBtn'),
@@ -56,7 +56,7 @@ const downloadButtons = [
 
 downloadButtons.forEach(btn => {
     if (btn) {
-        btn.addEventListener('click', showComingSoon);
+        btn.addEventListener('click', downloadLatestRelease);
     }
 });
 
