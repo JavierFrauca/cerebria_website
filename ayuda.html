@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Guía de configuración · CerebrIA</title>
+    <meta name="description" content="Guía paso a paso para configurar CerebrIA: Ollama local, OpenAI, Claude, DeepSeek, Voyage AI y modelos de embeddings.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <a href="index.html" class="logo">
+            <img src="cerebria_logo_full.png" alt="CerebrIA">
+        </a>
+        <div class="nav-links">
+            <a href="index.html#features">Características</a>
+            <a href="index.html#providers">Proveedores</a>
+            <a href="index.html#ragengine">Motor RAG</a>
+            <a href="index.html#syncwatch">Sincronización</a>
+            <a href="ayuda.html" style="color:#2A5298; font-weight:700;">Ayuda</a>
+            <a href="index.html#" class="btn-outline-light"><i class="fas fa-download"></i> Descargar gratis</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+    <!-- Hero ayuda -->
+    <section class="help-hero">
+        <div class="container">
+            <div class="help-hero-inner">
+                <div class="hero-badge"><i class="fas fa-book-open"></i> Guía de configuración</div>
+                <h1>Configura CerebrIA desde cero</h1>
+                <p>Tanto si quieres privacidad total con Ollama como si prefieres la potencia de OpenAI o Claude, esta guía te lleva de la mano paso a paso. No se necesitan conocimientos técnicos previos.</p>
+
+                <!-- Índice rápido -->
+                <div class="help-toc">
+                    <a href="#inicio-rapido" class="toc-item">
+                        <i class="fas fa-rocket"></i>
+                        <span>Inicio rápido</span>
+                    </a>
+                    <a href="#ollama" class="toc-item toc-local">
+                        <i class="fas fa-server"></i>
+                        <span>Ollama (local)</span>
+                    </a>
+                    <a href="#openai" class="toc-item">
+                        <i class="fas fa-robot"></i>
+                        <span>OpenAI</span>
+                    </a>
+                    <a href="#claude" class="toc-item">
+                        <i class="fas fa-brain"></i>
+                        <span>Claude</span>
+                    </a>
+                    <a href="#deepseek" class="toc-item">
+                        <i class="fas fa-microchip"></i>
+                        <span>DeepSeek</span>
+                    </a>
+                    <a href="#voyage" class="toc-item">
+                        <i class="fas fa-satellite-dish"></i>
+                        <span>Voyage AI</span>
+                    </a>
+                    <a href="#embeddings" class="toc-item toc-warning">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Embeddings</span>
+                    </a>
+                    <a href="#faq" class="toc-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>FAQ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inicio rápido -->
+    <section id="inicio-rapido" class="section help-section">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#e9f0f9; color:#1E3C72;">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div>
+                    <h2>¿Por dónde empiezo?</h2>
+                    <p>Elige la opción que mejor se adapte a ti</p>
+                </div>
+            </div>
+
+            <div class="choice-grid">
+                <a href="#ollama" class="choice-card choice-card--local">
+                    <div class="choice-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Quiero privacidad total</h3>
+                    <p>Ollama · Todo se procesa en tu ordenador. Sin cuentas, sin API keys, sin costes por uso. Necesitas un PC con al menos 8 GB de RAM.</p>
+                    <span class="choice-tag">Recomendado para privacidad</span>
+                </a>
+                <a href="#openai" class="choice-card choice-card--cloud">
+                    <div class="choice-icon" style="background:#10a37f22; color:#10a37f;"><i class="fas fa-bolt"></i></div>
+                    <h3>Quiero la mejor calidad</h3>
+                    <p>OpenAI GPT-4.1 · Modelos de mayor capacidad. Requiere crear una cuenta y añadir método de pago. Pago por uso.</p>
+                    <span class="choice-tag" style="background:#10a37f22; color:#10a37f;">Mejor calidad general</span>
+                </a>
+                <a href="#claude" class="choice-card">
+                    <div class="choice-icon" style="background:#d97b4b22; color:#d97b4b;"><i class="fas fa-book"></i></div>
+                    <h3>Textos largos y técnicos</h3>
+                    <p>Claude · Excelente para documentación extensa, análisis técnico y razonamiento complejo. Requiere cuenta en Anthropic.</p>
+                    <span class="choice-tag" style="background:#d97b4b22; color:#d97b4b;">Mejor para documentos técnicos</span>
+                </a>
+                <a href="#deepseek" class="choice-card">
+                    <div class="choice-icon" style="background:#4c6ef522; color:#4c6ef5;"><i class="fas fa-coins"></i></div>
+                    <h3>Quiero bajo coste</h3>
+                    <p>DeepSeek · Alto rendimiento a fracción del coste de OpenAI. Ideal para uso intensivo. Requiere cuenta en DeepSeek.</p>
+                    <span class="choice-tag" style="background:#4c6ef522; color:#4c6ef5;">Mejor relación calidad/precio</span>
+                </a>
+            </div>
+
+            <div class="info-box info-box--tip">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Consejo:</strong> Puedes cambiar de proveedor LLM en cualquier momento desde Configuración sin perder ningún documento. El proveedor de <strong>embeddings</strong> sí tiene implicaciones si lo cambias (ver <a href="#embeddings">sección Embeddings</a>).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= OLLAMA ============================= -->
+    <section id="ollama" class="section help-section" style="background: linear-gradient(180deg, #f0f5fe 0%, #fafcff 100%);">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#1E3C7222; color:#1E3C72;">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div>
+                    <h2>Ollama · IA 100% local</h2>
+                    <p>Sin internet, sin cuentas, sin costes por uso. Tus datos nunca salen de tu ordenador.</p>
+                </div>
+            </div>
+
+            <div class="info-box info-box--info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>¿Qué es Ollama?</strong> Es un programa que instala y ejecuta modelos de IA directamente en tu PC o Mac, igual que instalarías cualquier otra aplicación. Una vez instalado, CerebrIA lo usa de forma transparente.
+                </div>
+            </div>
+
+            <div class="requirements-box">
+                <h4><i class="fas fa-desktop"></i> Requisitos mínimos del sistema</h4>
+                <div class="req-grid">
+                    <div class="req-item req-ok">
+                        <i class="fas fa-memory"></i>
+                        <span><strong>8 GB RAM</strong> mínimo<br><small>16 GB recomendado</small></span>
+                    </div>
+                    <div class="req-item req-ok">
+                        <i class="fas fa-hdd"></i>
+                        <span><strong>5-15 GB</strong> espacio libre<br><small>por modelo descargado</small></span>
+                    </div>
+                    <div class="req-item req-ok">
+                        <i class="fas fa-microchip"></i>
+                        <span><strong>CPU moderna</strong><br><small>GPU opcional pero mejora mucho la velocidad</small></span>
+                    </div>
+                    <div class="req-item req-ok">
+                        <i class="fab fa-windows"></i>
+                        <span><strong>Windows 10/11</strong><br><small>macOS o Linux también</small></span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="steps-title"><i class="fas fa-list-ol"></i> Instalación paso a paso</h3>
+
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="help-step-num">1</div>
+                    <div class="help-step-content">
+                        <h4>Descarga Ollama</h4>
+                        <p>Abre tu navegador y ve a <strong>ollama.com</strong>. Haz clic en el botón de descarga para Windows (o tu sistema operativo).</p>
+                        <div class="code-block">
+                            <span class="code-label">Web oficial</span>
+                            <code>https://ollama.com/download</code>
+                        </div>
+                        <p class="step-hint"><i class="fas fa-shield-alt"></i> Es software libre y de confianza. El instalador pesa aproximadamente 80 MB.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">2</div>
+                    <div class="help-step-content">
+                        <h4>Instala Ollama</h4>
+                        <p>Ejecuta el instalador descargado (<code>OllamaSetup.exe</code>). El instalador es sencillo: acepta los términos y haz clic en <em>"Install"</em>. No necesitas cambiar ninguna opción.</p>
+                        <div class="info-box info-box--tip" style="margin-top:12px;">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Ollama se instala como un <strong>servicio en segundo plano</strong>. Verás su icono en la barra de tareas (cerca del reloj). No necesitas abrirlo manualmente, arranca solo con Windows.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">3</div>
+                    <div class="help-step-content">
+                        <h4>Descarga un modelo de lenguaje (LLM)</h4>
+                        <p>Abre el <strong>Símbolo del sistema</strong> (busca "cmd" en el menú inicio) o <strong>PowerShell</strong> y ejecuta:</p>
+                        <div class="code-block">
+                            <span class="code-label">Terminal — copia y pega este comando</span>
+                            <code>ollama pull llama3.2</code>
+                        </div>
+                        <p>Esto descarga el modelo <strong>Llama 3.2</strong> (3B parámetros, ~2 GB). Es un modelo excelente para empezar.</p>
+
+                        <div class="model-options">
+                            <h5><i class="fas fa-th-list"></i> Modelos recomendados según tu hardware</h5>
+                            <div class="model-table">
+                                <div class="model-row model-row--header">
+                                    <span>Modelo</span><span>Tamaño</span><span>RAM necesaria</span><span>Calidad</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>llama3.2</code></span><span>~2 GB</span><span>8 GB</span><span class="quality-bar quality-bar--3">●●●○○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>llama3.2:3b</code></span><span>~2 GB</span><span>8 GB</span><span class="quality-bar quality-bar--3">●●●○○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>llama3.1:8b</code></span><span>~5 GB</span><span>12 GB</span><span class="quality-bar quality-bar--4">●●●●○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>mistral</code></span><span>~4 GB</span><span>10 GB</span><span class="quality-bar quality-bar--4">●●●●○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>llama3.1:70b</code></span><span>~40 GB</span><span>48 GB</span><span class="quality-bar quality-bar--5">●●●●●</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="step-hint"><i class="fas fa-clock"></i> La descarga puede tardar varios minutos según tu conexión. El progreso se muestra en la terminal.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">4</div>
+                    <div class="help-step-content">
+                        <h4>Descarga un modelo de embeddings</h4>
+                        <p>Los embeddings son necesarios para que CerebrIA entienda el contenido de tus documentos. Descarga el modelo recomendado para Ollama:</p>
+                        <div class="code-block">
+                            <span class="code-label">Terminal</span>
+                            <code>ollama pull nomic-embed-text</code>
+                        </div>
+                        <p>Este modelo es ligero (~274 MB) y ofrece excelentes resultados para búsqueda semántica en español.</p>
+                        <div class="info-box info-box--warning" style="margin-top:12px;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div><strong>Importante:</strong> Una vez que ingieras documentos con un modelo de embeddings concreto, cambiar de modelo requiere reingestar todos los documentos desde cero. Elige bien desde el principio (ver <a href="#embeddings">guía de embeddings</a>).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">5</div>
+                    <div class="help-step-content">
+                        <h4>Verifica que Ollama funciona</h4>
+                        <p>Abre tu navegador y ve a:</p>
+                        <div class="code-block">
+                            <span class="code-label">Comprobación en navegador</span>
+                            <code>http://localhost:11434</code>
+                        </div>
+                        <p>Si ves el texto <strong>"Ollama is running"</strong>, ¡todo está listo!</p>
+                        <div class="info-box info-box--warning" style="margin-top:12px;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>Si no ves ese mensaje, abre el Símbolo del sistema y ejecuta <code>ollama serve</code> para iniciar el servicio manualmente.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">6</div>
+                    <div class="help-step-content">
+                        <h4>Configura CerebrIA para usar Ollama</h4>
+                        <p>En CerebrIA, ve a <strong>Configuración → Proveedor de IA</strong> y selecciona:</p>
+                        <div class="config-preview">
+                            <div class="config-row">
+                                <span class="config-label">Proveedor LLM</span>
+                                <span class="config-value"><i class="fas fa-server"></i> Ollama</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">URL de Ollama</span>
+                                <span class="config-value"><code>http://localhost:11434</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo LLM</span>
+                                <span class="config-value"><code>llama3.2</code> (o el que hayas descargado)</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Proveedor Embeddings</span>
+                                <span class="config-value"><i class="fas fa-server"></i> Ollama</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo Embeddings</span>
+                                <span class="config-value"><code>nomic-embed-text</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">API Key</span>
+                                <span class="config-value" style="color:#6b8aa8;">No necesaria · Dejar vacío</span>
+                            </div>
+                        </div>
+                        <div class="info-box info-box--success" style="margin-top:16px;">
+                            <i class="fas fa-check-circle"></i>
+                            <div><strong>¡Listo!</strong> CerebrIA ya puede funcionar completamente offline. Todos tus documentos y conversaciones se procesan en tu propio ordenador.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= OPENAI ============================= -->
+    <section id="openai" class="section help-section">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#10a37f22; color:#10a37f;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h2>OpenAI · GPT-4.1</h2>
+                    <p>El proveedor más popular. Excelente equilibrio entre calidad, velocidad y facilidad de uso.</p>
+                </div>
+            </div>
+
+            <div class="info-box info-box--info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>¿Qué es una API Key?</strong> Es una contraseña especial que OpenAI te da para que sus modelos de IA puedan usarse desde aplicaciones como CerebrIA. Necesitas una cuenta y un método de pago, pero el coste es muy bajo: procesar un documento típico cuesta menos de 0,01 €.
+                </div>
+            </div>
+
+            <h3 class="steps-title"><i class="fas fa-list-ol"></i> Obtener tu API Key de OpenAI</h3>
+
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="help-step-num">1</div>
+                    <div class="help-step-content">
+                        <h4>Crea una cuenta en OpenAI</h4>
+                        <p>Ve a la plataforma de desarrollo de OpenAI:</p>
+                        <div class="code-block">
+                            <span class="code-label">Abre en el navegador</span>
+                            <code>https://platform.openai.com/signup</code>
+                        </div>
+                        <p>Puedes registrarte con tu email, o con tu cuenta de Google o Microsoft. Elige la opción que prefieras.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">2</div>
+                    <div class="help-step-content">
+                        <h4>Añade un método de pago</h4>
+                        <p>Sin crédito, las llamadas a la API no funcionan. Ve a:</p>
+                        <div class="code-block">
+                            <span class="code-label">En el panel de OpenAI</span>
+                            <code>platform.openai.com → Billing → Add payment method</code>
+                        </div>
+                        <p>Añade tu tarjeta de crédito/débito. OpenAI solo cobra lo que uses. Te recomendamos configurar un límite de gasto (<em>Usage limits</em>) de 5-10 € al mes para empezar.</p>
+                        <div class="info-box info-box--tip" style="margin-top:12px;">
+                            <i class="fas fa-coins"></i>
+                            <div><strong>Coste orientativo:</strong> Ingestar 100 documentos PDF medianos cuesta aproximadamente <strong>0,10 - 0,50 €</strong>. Una consulta completa cuesta entre <strong>0,001 y 0,01 €</strong>.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">3</div>
+                    <div class="help-step-content">
+                        <h4>Genera tu API Key</h4>
+                        <p>En el panel de OpenAI, ve a:</p>
+                        <div class="code-block">
+                            <span class="code-label">Ruta en el panel</span>
+                            <code>platform.openai.com → API keys → Create new secret key</code>
+                        </div>
+                        <p>Dale un nombre descriptivo (por ejemplo, <em>"CerebrIA"</em>) y haz clic en <strong>Create secret key</strong>.</p>
+                        <div class="info-box info-box--warning" style="margin-top:12px;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div><strong>¡Cópiala ahora!</strong> La clave solo se muestra una vez. Empieza por <code>sk-...</code> y tiene unos 50 caracteres. Cópiala y guárdala en un lugar seguro antes de cerrar la ventana.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">4</div>
+                    <div class="help-step-content">
+                        <h4>Configura CerebrIA con tu clave</h4>
+                        <p>En CerebrIA, ve a <strong>Configuración → Proveedor de IA</strong>:</p>
+                        <div class="config-preview">
+                            <div class="config-row">
+                                <span class="config-label">Proveedor LLM</span>
+                                <span class="config-value" style="color:#10a37f;"><i class="fas fa-robot"></i> OpenAI</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo LLM</span>
+                                <span class="config-value"><code>gpt-4.1-mini</code> (recomendado)</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">API Key OpenAI</span>
+                                <span class="config-value"><code>sk-proj-XXXXXXXXXXXX...</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Proveedor Embeddings</span>
+                                <span class="config-value"><i class="fas fa-robot"></i> OpenAI Embeddings</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo Embeddings</span>
+                                <span class="config-value"><code>text-embedding-3-small</code></span>
+                            </div>
+                        </div>
+                        <div class="model-options" style="margin-top:20px;">
+                            <h5><i class="fas fa-th-list"></i> Modelos LLM de OpenAI disponibles</h5>
+                            <div class="model-table">
+                                <div class="model-row model-row--header">
+                                    <span>Modelo</span><span>Velocidad</span><span>Coste</span><span>Calidad</span>
+                                </div>
+                                <div class="model-row model-row--recommended">
+                                    <span><code>gpt-4.1-mini</code> ⭐</span><span>Rápido</span><span>Muy bajo</span><span class="quality-bar quality-bar--4">●●●●○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>gpt-4.1</code></span><span>Normal</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>gpt-4o</code></span><span>Rápido</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>gpt-4o-mini</code></span><span>Muy rápido</span><span>Muy bajo</span><span class="quality-bar quality-bar--3">●●●○○</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= CLAUDE ============================= -->
+    <section id="claude" class="section help-section" style="background: linear-gradient(180deg, #fff8f4 0%, #fafcff 100%);">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#d97b4b22; color:#d97b4b;">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div>
+                    <h2>Claude · Anthropic</h2>
+                    <p>Excepcional para documentación técnica, razonamiento complejo y textos muy largos.</p>
+                </div>
+            </div>
+
+            <h3 class="steps-title"><i class="fas fa-list-ol"></i> Obtener tu API Key de Anthropic</h3>
+
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="help-step-num">1</div>
+                    <div class="help-step-content">
+                        <h4>Crea una cuenta en Anthropic</h4>
+                        <div class="code-block">
+                            <span class="code-label">Abre en el navegador</span>
+                            <code>https://console.anthropic.com/</code>
+                        </div>
+                        <p>Regístrate con tu email. Anthropic puede pedirte verificación por teléfono.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">2</div>
+                    <div class="help-step-content">
+                        <h4>Añade créditos</h4>
+                        <p>Sin crédito, la API no funciona. Ve a:</p>
+                        <div class="code-block">
+                            <span class="code-label">En el panel de Anthropic</span>
+                            <code>console.anthropic.com → Billing → Add credit</code>
+                        </div>
+                        <p>Puedes añadir desde 5 USD. Claude también ofrece una pequeña cantidad de créditos gratuitos al registrarte.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">3</div>
+                    <div class="help-step-content">
+                        <h4>Genera tu API Key</h4>
+                        <div class="code-block">
+                            <span class="code-label">Ruta en el panel</span>
+                            <code>console.anthropic.com → API Keys → Create Key</code>
+                        </div>
+                        <div class="info-box info-box--warning" style="margin-top:12px;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>La clave empieza por <code>sk-ant-...</code>. Al igual que con OpenAI, <strong>cópiala nada más crearla</strong> y guárdala en un lugar seguro.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">4</div>
+                    <div class="help-step-content">
+                        <h4>Configura CerebrIA</h4>
+                        <div class="config-preview">
+                            <div class="config-row">
+                                <span class="config-label">Proveedor LLM</span>
+                                <span class="config-value" style="color:#d97b4b;"><i class="fas fa-brain"></i> Claude · Anthropic</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo LLM</span>
+                                <span class="config-value"><code>claude-sonnet-4-5</code> (recomendado)</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">API Key Anthropic</span>
+                                <span class="config-value"><code>sk-ant-XXXXXXXXXXXX...</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Proveedor Embeddings</span>
+                                <span class="config-value" style="color:#7c3aed;"><i class="fas fa-satellite-dish"></i> Voyage AI <span style="font-size:0.8em; color:#6b8aa8;">(recomendado con Claude)</span></span>
+                            </div>
+                        </div>
+                        <div class="info-box info-box--tip" style="margin-top:16px;">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Combinación recomendada:</strong> Claude como LLM + <a href="#voyage">Voyage AI</a> como embeddings. Ambos son de Anthropic y están optimizados para funcionar juntos.</div>
+                        </div>
+                        <div class="model-options" style="margin-top:20px;">
+                            <h5><i class="fas fa-th-list"></i> Modelos Claude disponibles</h5>
+                            <div class="model-table">
+                                <div class="model-row model-row--header">
+                                    <span>Modelo</span><span>Ventana contexto</span><span>Coste</span><span>Uso ideal</span>
+                                </div>
+                                <div class="model-row model-row--recommended">
+                                    <span><code>claude-sonnet-4-5</code> ⭐</span><span>200K tokens</span><span>Medio</span><span style="font-size:0.82em;">Uso general</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>claude-haiku-3-5</code></span><span>200K tokens</span><span>Bajo</span><span style="font-size:0.82em;">Rápido y barato</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>claude-opus-4</code></span><span>200K tokens</span><span>Alto</span><span style="font-size:0.82em;">Máxima calidad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= DEEPSEEK ============================= -->
+    <section id="deepseek" class="section help-section">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#4c6ef522; color:#4c6ef5;">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div>
+                    <h2>DeepSeek</h2>
+                    <p>Alto rendimiento a un coste hasta 10× menor que OpenAI. Ideal para uso intensivo.</p>
+                </div>
+            </div>
+
+            <h3 class="steps-title"><i class="fas fa-list-ol"></i> Obtener tu API Key de DeepSeek</h3>
+
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="help-step-num">1</div>
+                    <div class="help-step-content">
+                        <h4>Crea una cuenta en DeepSeek</h4>
+                        <div class="code-block">
+                            <span class="code-label">Abre en el navegador</span>
+                            <code>https://platform.deepseek.com/sign_up</code>
+                        </div>
+                        <p>Regístrate con tu email y verifica tu cuenta.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">2</div>
+                    <div class="help-step-content">
+                        <h4>Recarga tu saldo</h4>
+                        <div class="code-block">
+                            <span class="code-label">En el panel de DeepSeek</span>
+                            <code>platform.deepseek.com → Top Up</code>
+                        </div>
+                        <p>El mínimo es generalmente 2 USD, que dará para miles de consultas.</p>
+                        <div class="info-box info-box--tip" style="margin-top:12px;">
+                            <i class="fas fa-coins"></i>
+                            <div><strong>Coste orientativo:</strong> DeepSeek es aproximadamente <strong>10-30 veces más barato</strong> que GPT-4. Con 2 USD puedes hacer miles de consultas.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">3</div>
+                    <div class="help-step-content">
+                        <h4>Genera tu API Key</h4>
+                        <div class="code-block">
+                            <span class="code-label">Ruta en el panel</span>
+                            <code>platform.deepseek.com → API Keys → Create API Key</code>
+                        </div>
+                        <p>La clave empieza por <code>sk-...</code>. Cópiala y guárdala.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">4</div>
+                    <div class="help-step-content">
+                        <h4>Configura CerebrIA</h4>
+                        <div class="config-preview">
+                            <div class="config-row">
+                                <span class="config-label">Proveedor LLM</span>
+                                <span class="config-value" style="color:#4c6ef5;"><i class="fas fa-microchip"></i> DeepSeek</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo LLM</span>
+                                <span class="config-value"><code>deepseek-chat</code> (recomendado)</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">API Key DeepSeek</span>
+                                <span class="config-value"><code>sk-XXXXXXXXXXXX...</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Proveedor Embeddings</span>
+                                <span class="config-value"><i class="fas fa-cubes"></i> DeepSeek Embeddings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= VOYAGE AI ============================= -->
+    <section id="voyage" class="section help-section" style="background: linear-gradient(180deg, #f5f0ff 0%, #fafcff 100%);">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#7c3aed22; color:#7c3aed;">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <div>
+                    <h2>Voyage AI · Embeddings</h2>
+                    <p>El mejor proveedor de embeddings externo. Especialmente recomendado si usas Claude como LLM.</p>
+                </div>
+            </div>
+
+            <div class="info-box info-box--info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Voyage AI es solo para embeddings.</strong> No proporciona modelos de lenguaje (LLM). Si usas Voyage AI, necesitas también configurar un LLM por separado (Claude, OpenAI, etc.).
+                </div>
+            </div>
+
+            <h3 class="steps-title"><i class="fas fa-list-ol"></i> Obtener tu API Key de Voyage AI</h3>
+
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="help-step-num">1</div>
+                    <div class="help-step-content">
+                        <h4>Crea una cuenta en Voyage AI</h4>
+                        <div class="code-block">
+                            <span class="code-label">Abre en el navegador</span>
+                            <code>https://www.voyageai.com/</code>
+                        </div>
+                        <p>Haz clic en <em>"Get started"</em> o <em>"Sign up"</em>. Puedes usar tu cuenta de Google.</p>
+                        <div class="info-box info-box--tip" style="margin-top:12px;">
+                            <i class="fas fa-gift"></i>
+                            <div>Voyage AI ofrece <strong>200 millones de tokens gratuitos</strong> al registrarte, lo que equivale a ingestar miles de documentos sin coste.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">2</div>
+                    <div class="help-step-content">
+                        <h4>Genera tu API Key</h4>
+                        <div class="code-block">
+                            <span class="code-label">Ruta en el panel</span>
+                            <code>dash.voyageai.com → API Keys → Create new key</code>
+                        </div>
+                        <p>La clave empieza por <code>pa-...</code>. Cópiala y guárdala.</p>
+                    </div>
+                </div>
+
+                <div class="help-step">
+                    <div class="help-step-num">3</div>
+                    <div class="help-step-content">
+                        <h4>Configura CerebrIA</h4>
+                        <div class="config-preview">
+                            <div class="config-row">
+                                <span class="config-label">Proveedor Embeddings</span>
+                                <span class="config-value" style="color:#7c3aed;"><i class="fas fa-satellite-dish"></i> Voyage AI</span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">API Key Voyage AI</span>
+                                <span class="config-value"><code>pa-XXXXXXXXXXXX...</code></span>
+                            </div>
+                            <div class="config-row">
+                                <span class="config-label">Modelo Embeddings</span>
+                                <span class="config-value"><code>voyage-3</code> (recomendado)</span>
+                            </div>
+                        </div>
+                        <div class="model-options" style="margin-top:20px;">
+                            <h5><i class="fas fa-th-list"></i> Modelos de Voyage AI</h5>
+                            <div class="model-table">
+                                <div class="model-row model-row--header">
+                                    <span>Modelo</span><span>Dimensiones</span><span>Coste</span><span>Calidad</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>voyage-3-lite</code></span><span>512</span><span>Muy bajo</span><span class="quality-bar quality-bar--3">●●●○○</span>
+                                </div>
+                                <div class="model-row model-row--recommended">
+                                    <span><code>voyage-3</code> ⭐</span><span>1 024</span><span>Bajo</span><span class="quality-bar quality-bar--4">●●●●○</span>
+                                </div>
+                                <div class="model-row">
+                                    <span><code>voyage-3-large</code></span><span>1 024</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= EMBEDDINGS ============================= -->
+    <section id="embeddings" class="section help-section">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#e53e3e22; color:#e53e3e;">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div>
+                    <h2>¿Qué son los embeddings y por qué importan?</h2>
+                    <p>La decisión más importante antes de ingestar tus documentos</p>
+                </div>
+            </div>
+
+            <!-- Explicación conceptual -->
+            <div class="concept-box">
+                <div class="concept-icon"><i class="fas fa-language"></i></div>
+                <div class="concept-body">
+                    <h4>Explicación sencilla</h4>
+                    <p>Imagina que tienes una biblioteca enorme con miles de libros. Para encontrar información, necesitas un <strong>índice</strong> que entienda el significado de cada párrafo, no solo las palabras exactas.</p>
+                    <p style="margin-top:8px;">Los <strong>embeddings</strong> son ese índice: un proceso que traduce cada fragmento de texto en una lista de números que captura su "significado". Cuando haces una pregunta, CerebrIA convierte tu pregunta en el mismo tipo de números y busca los fragmentos más parecidos.</p>
+                    <p style="margin-top:8px;">El <strong>modelo de embeddings</strong> es el motor que hace esa traducción. Distintos modelos producen distintos tipos de números, y son <strong>incompatibles entre sí</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Advertencia cambio de modelo -->
+            <div class="info-box info-box--danger" style="margin-top: 32px;">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <strong>⚠️ Cambiar el modelo de embeddings requiere reingestar todos tus documentos.</strong>
+                    <p style="margin-top:8px;">Si empiezas con <code>nomic-embed-text</code> de Ollama y luego cambias a <code>text-embedding-3-small</code> de OpenAI, los números que tenía guardados ya no son válidos. CerebrIA detectará el cambio automáticamente y te pedirá confirmación, pero <strong>el proceso de reingestión puede llevar horas</strong> si tienes muchos documentos.</p>
+                    <p style="margin-top:8px;"><strong>Elige bien desde el principio y no cambies salvo que sea necesario.</strong></p>
+                </div>
+            </div>
+
+            <!-- Tabla comparativa -->
+            <h3 class="steps-title" style="margin-top:40px;"><i class="fas fa-balance-scale"></i> ¿Qué modelo de embeddings elegir?</h3>
+
+            <div class="embedding-comparison">
+                <div class="emb-card emb-card--local">
+                    <div class="emb-card-header">
+                        <i class="fas fa-server"></i>
+                        <h4>Ollama · nomic-embed-text</h4>
+                        <span class="emb-tag emb-tag--local">100% Local</span>
+                    </div>
+                    <ul class="emb-list">
+                        <li class="pro"><i class="fas fa-check"></i> Sin coste, sin internet</li>
+                        <li class="pro"><i class="fas fa-check"></i> Privacidad total</li>
+                        <li class="pro"><i class="fas fa-check"></i> Excelente para español</li>
+                        <li class="con"><i class="fas fa-times"></i> Requiere Ollama instalado</li>
+                        <li class="con"><i class="fas fa-times"></i> Ligeramente menor calidad que servicios cloud</li>
+                    </ul>
+                    <div class="emb-use-case">
+                        <strong>Ideal para:</strong> privacidad, uso offline, documentos en español, usuarios con Ollama ya configurado
+                    </div>
+                </div>
+
+                <div class="emb-card">
+                    <div class="emb-card-header">
+                        <i class="fas fa-robot" style="color:#10a37f;"></i>
+                        <h4>OpenAI · text-embedding-3-small</h4>
+                        <span class="emb-tag">Cloud</span>
+                    </div>
+                    <ul class="emb-list">
+                        <li class="pro"><i class="fas fa-check"></i> Excelente calidad general</li>
+                        <li class="pro"><i class="fas fa-check"></i> Rápido, fiable</li>
+                        <li class="pro"><i class="fas fa-check"></i> 1 536 dimensiones, muy preciso</li>
+                        <li class="con"><i class="fas fa-times"></i> Coste por tokens</li>
+                        <li class="con"><i class="fas fa-times"></i> Los datos pasan por servidores de OpenAI</li>
+                    </ul>
+                    <div class="emb-use-case">
+                        <strong>Ideal para:</strong> usuarios de OpenAI que ya tienen API key y quieren un stack uniforme
+                    </div>
+                </div>
+
+                <div class="emb-card emb-card--recommended">
+                    <div class="emb-card-badge">Recomendado con Claude</div>
+                    <div class="emb-card-header">
+                        <i class="fas fa-satellite-dish" style="color:#7c3aed;"></i>
+                        <h4>Voyage AI · voyage-3</h4>
+                        <span class="emb-tag emb-tag--voyage">Cloud</span>
+                    </div>
+                    <ul class="emb-list">
+                        <li class="pro"><i class="fas fa-check"></i> La mejor calidad de la comparativa</li>
+                        <li class="pro"><i class="fas fa-check"></i> 200M tokens gratuitos al registrarse</li>
+                        <li class="pro"><i class="fas fa-check"></i> Optimizado para trabajar con Claude</li>
+                        <li class="con"><i class="fas fa-times"></i> Requiere cuenta adicional</li>
+                        <li class="con"><i class="fas fa-times"></i> Los datos pasan por servidores de Voyage</li>
+                    </ul>
+                    <div class="emb-use-case">
+                        <strong>Ideal para:</strong> usuarios de Claude que quieren la mejor calidad de búsqueda semántica
+                    </div>
+                </div>
+
+                <div class="emb-card">
+                    <div class="emb-card-header">
+                        <i class="fas fa-cubes" style="color:#4c6ef5;"></i>
+                        <h4>DeepSeek Embeddings</h4>
+                        <span class="emb-tag">Cloud</span>
+                    </div>
+                    <ul class="emb-list">
+                        <li class="pro"><i class="fas fa-check"></i> Muy bajo coste</li>
+                        <li class="pro"><i class="fas fa-check"></i> Stack uniforme con DeepSeek LLM</li>
+                        <li class="con"><i class="fas fa-times"></i> Calidad algo inferior a OpenAI/Voyage</li>
+                        <li class="con"><i class="fas fa-times"></i> Los datos pasan por servidores de DeepSeek</li>
+                    </ul>
+                    <div class="emb-use-case">
+                        <strong>Ideal para:</strong> usuarios de DeepSeek que quieren el stack más económico posible
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla rápida de dimensiones -->
+            <div class="dim-table-wrap">
+                <h4><i class="fas fa-ruler"></i> Dimensiones de los modelos de embeddings</h4>
+                <p style="color:#4a6080; margin-bottom:16px; font-size:0.9rem;">Las dimensiones son el "tamaño" del índice. Más dimensiones = más preciso, pero más espacio en disco.</p>
+                <div class="model-table">
+                    <div class="model-row model-row--header">
+                        <span>Modelo</span><span>Proveedor</span><span>Dimensiones</span><span>Espacio por doc.</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>nomic-embed-text</code></span><span>Ollama</span><span>768</span><span>~3 KB</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>text-embedding-3-small</code></span><span>OpenAI</span><span>1 536</span><span>~6 KB</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>voyage-3-lite</code></span><span>Voyage AI</span><span>512</span><span>~2 KB</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>voyage-3</code></span><span>Voyage AI</span><span>1 024</span><span>~4 KB</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>voyage-3-large</code></span><span>Voyage AI</span><span>1 024</span><span>~4 KB</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>DeepSeek Embeddings</code></span><span>DeepSeek</span><span>1 024</span><span>~4 KB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= FAQ ============================= -->
+    <section id="faq" class="section help-section" style="background: linear-gradient(180deg, #f0f5fe 0%, #fafcff 100%);">
+        <div class="container help-container">
+            <div class="help-section-header">
+                <div class="help-section-icon" style="background:#1E3C7222; color:#1E3C72;">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div>
+                    <h2>Preguntas frecuentes</h2>
+                    <p>Respuestas a las dudas más comunes</p>
+                </div>
+            </div>
+
+            <div class="faq-list">
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Puedo usar CerebrIA sin internet?</summary>
+                    <div class="faq-answer">
+                        <p>Sí, si usas <strong>Ollama</strong> como proveedor de LLM y embeddings. Con OpenAI, Claude, DeepSeek o Voyage AI necesitas conexión a internet para cada consulta, ya que la IA se ejecuta en sus servidores.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Son seguras mis API Keys?</summary>
+                    <div class="faq-answer">
+                        <p>CerebrIA guarda tus claves en el fichero de configuración local de tu ordenador (<code>appsettings.json</code> o similar). <strong>Nunca se envían a ningún servidor de CerebrIA</strong>. Las claves se usan únicamente para comunicarse directamente con OpenAI/Anthropic/DeepSeek/Voyage desde tu máquina.</p>
+                        <p style="margin-top:8px;">Buenas prácticas: no compartas el fichero de configuración, no subas las claves a GitHub y actívalas o desactívalas desde el panel del proveedor si sospechas que se han comprometido.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> Ollama es muy lento en mi PC. ¿Qué puedo hacer?</summary>
+                    <div class="faq-answer">
+                        <p>La velocidad de Ollama depende del hardware. Algunas opciones:</p>
+                        <ul style="margin-top:8px; padding-left:20px;">
+                            <li>Usa un modelo más pequeño: <code>llama3.2:3b</code> en lugar de modelos de 8B o 70B.</li>
+                            <li>Si tienes GPU NVIDIA, asegúrate de que Ollama la detecta (instala los drivers CUDA).</li>
+                            <li>Cierra otras aplicaciones que consuman RAM mientras usas CerebrIA.</li>
+                            <li>Considera usar OpenAI o DeepSeek si la velocidad es prioritaria.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Puedo cambiar el LLM sin perder mis documentos?</summary>
+                    <div class="faq-answer">
+                        <p><strong>Sí.</strong> Cambiar de LLM (por ejemplo, pasar de OpenAI a Claude) es completamente seguro y no afecta a tus documentos ni a los embeddings. Puedes cambiarlo en cualquier momento desde Configuración.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Qué pasa si cambio el modelo de embeddings?</summary>
+                    <div class="faq-answer">
+                        <p>Es la operación más crítica. Si cambias el modelo de embeddings, <strong>todos los documentos ya indexados deben ser eliminados y reingresados desde cero</strong>. Esto puede tardar desde minutos hasta horas dependiendo del número de documentos.</p>
+                        <p style="margin-top:8px;">CerebrIA detecta automáticamente si el modelo configurado no coincide con el del índice y te avisa antes de que ocurra un error. Sigue las instrucciones de la interfaz en ese momento.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> He ingresado documentos pero las respuestas no son buenas. ¿Por qué?</summary>
+                    <div class="faq-answer">
+                        <p>Varias causas posibles:</p>
+                        <ul style="margin-top:8px; padding-left:20px;">
+                            <li><strong>Calidad del PDF:</strong> PDFs escaneados (imágenes) no se leen bien. Usa el modo de refinamiento automático para limpiar el texto.</li>
+                            <li><strong>Modelo muy pequeño:</strong> Con Ollama, los modelos de 3B tienen capacidad limitada. Prueba con <code>llama3.1:8b</code> si tu PC lo permite.</li>
+                            <li><strong>Pregunta demasiado vaga:</strong> Intenta ser más específico, incluye términos clave del documento.</li>
+                            <li><strong>Dominio incorrecto:</strong> Verifica que estás buscando en el dominio correcto.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Cómo sé que Ollama está funcionando?</summary>
+                    <div class="faq-answer">
+                        <p>Abre el navegador y ve a <code>http://localhost:11434</code>. Si ves "Ollama is running", está activo. También puedes comprobar la lista de modelos instalados ejecutando en la terminal:</p>
+                        <div class="code-block" style="margin-top:8px;">
+                            <code>ollama list</code>
+                        </div>
+                        <p style="margin-top:8px;">Esto muestra todos los modelos descargados y disponibles.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Puedo usar un LLM de un proveedor y embeddings de otro?</summary>
+                    <div class="faq-answer">
+                        <p><strong>Sí.</strong> CerebrIA está diseñado exactamente para esto. Por ejemplo, puedes usar:</p>
+                        <ul style="margin-top:8px; padding-left:20px;">
+                            <li>Claude (LLM) + Voyage AI (embeddings) — combinación premium recomendada</li>
+                            <li>Ollama/llama3 (LLM) + OpenAI text-embedding-3-small (embeddings) — LLM local con mejor indexado</li>
+                            <li>OpenAI GPT-4 (LLM) + Ollama nomic-embed-text (embeddings) — ahorra coste en embeddings</li>
+                        </ul>
+                        <p style="margin-top:8px;">La única restricción es que, una vez elegido el modelo de embeddings, no debes cambiarlo sin reingestar los documentos.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary><i class="fas fa-chevron-right"></i> ¿Mis documentos se guardan en la nube?</summary>
+                    <div class="faq-answer">
+                        <p>No. CerebrIA es una aplicación de escritorio local. Tus documentos, embeddings y base de datos vectorial (Qdrant) se almacenan íntegramente en tu ordenador.</p>
+                        <p style="margin-top:8px;">Si usas OpenAI, Claude, DeepSeek o Voyage AI, <strong>los fragmentos de texto de los documentos sí se envían a sus servidores</strong> para generar los embeddings y las respuestas. Si esto no es aceptable, usa Ollama para todo.</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div style="background: linear-gradient(135deg, #1E3C72, #2A5298); border-radius: 48px; padding: 48px 32px; text-align: center; color: white;">
+                <i class="fas fa-check-circle" style="font-size: 2.5rem; margin-bottom: 16px; opacity:0.9;"></i>
+                <h2 style="color: white; margin-bottom: 16px;">¿Todo listo para empezar?</h2>
+                <p style="max-width: 600px; margin: 0 auto 32px auto; opacity:0.9;">Descarga CerebrIA, elige tu proveedor favorito y empieza a hacer preguntas a tus documentos en minutos.</p>
+                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                    <a href="index.html" class="btn-secondary" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.4); color:white;">
+                        <i class="fas fa-arrow-left"></i> Volver al inicio
+                    </a>
+                    <a href="index.html#" class="btn-primary" style="background:white; color:#1E3C72;">
+                        <i class="fas fa-download"></i> Descargar CerebrIA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-flex">
+            <div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <img src="cerebria_logo_icon.png" alt="CerebrIA" style="height: 32px; width: auto; filter: brightness(0) invert(1) opacity(0.85);">
+                    <span style="font-weight: 700; font-size: 1.2rem;">CerebrIA</span>
+                </div>
+                <p>RAG local, multidominio y autónomo.<br>Potencia tu conocimiento con IA privada.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="index.html#features">Características</a>
+                <a href="index.html#providers">Proveedores</a>
+                <a href="index.html#ragengine">Motor RAG</a>
+                <a href="ayuda.html">Ayuda</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <i class="fas fa-lock-open"></i> Código abierto · OpenAI · Claude · DeepSeek · Voyage AI · Ollama · Sin tracking · Privacidad por diseño<br>
+            © 2025 CerebrIA
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth scroll para anclas internas
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Animar FAQ chevron
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('toggle', () => {
+            const icon = item.querySelector('summary i');
+            if (item.open) {
+                icon.style.transform = 'rotate(90deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+</script>
+</body>
+</html>
