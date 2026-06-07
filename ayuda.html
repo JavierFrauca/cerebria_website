@@ -262,9 +262,9 @@
                         <p>Los embeddings son necesarios para que CerebrIA entienda el contenido de tus documentos. Descarga el modelo recomendado para Ollama:</p>
                         <div class="code-block">
                             <span class="code-label">Terminal</span>
-                            <code>ollama pull nomic-embed-text</code>
+                            <code>ollama pull bge-m3</code>
                         </div>
-                        <p>Este modelo es ligero (~274 MB) y ofrece excelentes resultados para búsqueda semántica en español.</p>
+                        <p><code>bge-m3</code> ofrece muy buen equilibrio para búsqueda semántica multilingüe. Si priorizas ligereza, <code>nomic-embed-text</code> sigue siendo una alternativa válida.</p>
                         <div class="info-box info-box--warning" style="margin-top:12px;">
                             <i class="fas fa-exclamation-triangle"></i>
                             <div><strong>Importante:</strong> Una vez que ingieras documentos con un modelo de embeddings concreto, cambiar de modelo requiere reingestar todos los documentos desde cero. Elige bien desde el principio (ver <a href="#embeddings">guía de embeddings</a>).</div>
@@ -313,7 +313,7 @@
                             </div>
                             <div class="config-row">
                                 <span class="config-label">Modelo Embeddings</span>
-                                <span class="config-value"><code>nomic-embed-text</code></span>
+                                <span class="config-value"><code>bge-m3</code></span>
                             </div>
                             <div class="config-row">
                                 <span class="config-label">API Key</span>
@@ -670,7 +670,7 @@
                 <i class="fas fa-exclamation-circle"></i>
                 <div>
                     <strong>⚠️ Cambiar el modelo de embeddings requiere reingestar todos tus documentos.</strong>
-                    <p style="margin-top:8px;">Si empiezas con <code>nomic-embed-text</code> de Ollama y luego cambias a <code>text-embedding-3-small</code> de OpenAI, los números que tenía guardados ya no son válidos. CerebrIA detectará el cambio automáticamente y te pedirá confirmación, pero <strong>el proceso de reingestión puede llevar horas</strong> si tienes muchos documentos.</p>
+                    <p style="margin-top:8px;">Si empiezas con <code>bge-m3</code> de Ollama y luego cambias a <code>text-embedding-3-small</code> de OpenAI, los números que tenía guardados ya no son válidos. CerebrIA detectará el cambio automáticamente y te pedirá confirmación, pero <strong>el proceso de reingestión puede llevar horas</strong> si tienes muchos documentos.</p>
                     <p style="margin-top:8px;"><strong>Elige bien desde el principio y no cambies salvo que sea necesario.</strong></p>
                 </div>
             </div>
@@ -682,18 +682,18 @@
                 <div class="emb-card emb-card--local">
                     <div class="emb-card-header">
                         <i class="fas fa-server"></i>
-                        <h4>Ollama · nomic-embed-text</h4>
+                        <h4>Ollama · bge-m3 (por defecto)</h4>
                         <span class="emb-tag emb-tag--local">100% Local</span>
                     </div>
                     <ul class="emb-list">
                         <li class="pro"><i class="fas fa-check"></i> Sin coste, sin internet</li>
                         <li class="pro"><i class="fas fa-check"></i> Privacidad total</li>
-                        <li class="pro"><i class="fas fa-check"></i> Excelente para español</li>
+                        <li class="pro"><i class="fas fa-check"></i> Excelente para búsquedas multilingües</li>
                         <li class="con"><i class="fas fa-times"></i> Requiere Ollama instalado</li>
                         <li class="con"><i class="fas fa-times"></i> Ligeramente menor calidad que servicios cloud</li>
                     </ul>
                     <div class="emb-use-case">
-                        <strong>Ideal para:</strong> privacidad, uso offline, documentos en español, usuarios con Ollama ya configurado
+                        <strong>Ideal para:</strong> privacidad, uso offline, documentos mixtos ES/EN y usuarios con Ollama ya configurado
                     </div>
                 </div>
 
@@ -740,6 +740,9 @@
                 <div class="model-table">
                     <div class="model-row model-row--header">
                         <span>Modelo</span><span>Proveedor</span><span>Dimensiones</span><span>Espacio por doc.</span>
+                    </div>
+                    <div class="model-row">
+                        <span><code>bge-m3</code> ⭐</span><span>Ollama</span><span>1 024</span><span>~4 KB</span>
                     </div>
                     <div class="model-row">
                         <span><code>nomic-embed-text</code></span><span>Ollama</span><span>768</span><span>~3 KB</span>
@@ -844,7 +847,7 @@
                         <ul style="margin-top:8px; padding-left:20px;">
                             <li>Claude (LLM) + OpenAI text-embedding-3-small (embeddings) — combina lo mejor de ambos</li>
                             <li>Ollama/llama3 (LLM) + OpenAI text-embedding-3-small (embeddings) — LLM local con mejor indexado</li>
-                            <li>OpenAI GPT-4 (LLM) + Ollama nomic-embed-text (embeddings) — ahorra coste en embeddings</li>
+                            <li>OpenAI GPT-4 (LLM) + Ollama bge-m3 (embeddings) — ahorra coste en embeddings</li>
                         </ul>
                         <p style="margin-top:8px;">La única restricción es que, una vez elegido el modelo de embeddings, no debes cambiarlo sin reingestar los documentos.</p>
                     </div>
