@@ -189,6 +189,136 @@ body {
 .section {
     padding: 80px 0;
 }
+
+.target-note-section {
+    padding-top: 28px;
+    padding-bottom: 10px;
+}
+
+.target-note-card {
+    background: linear-gradient(135deg, #f5f8ff 0%, #eef4ff 55%, #f8fbff 100%);
+    border: 1px solid #d7e3f5;
+    border-radius: 34px;
+    padding: 34px 32px;
+    max-width: 980px;
+    margin: 0 auto;
+    box-shadow: 0 14px 30px rgba(30, 60, 114, 0.08);
+}
+
+.target-note-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1E3C72;
+    color: white;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+}
+
+.target-note-card h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #132943;
+    margin-bottom: 16px;
+}
+
+.target-note-card p {
+    font-size: 1.03rem;
+    color: #2f4f72;
+    margin-bottom: 14px;
+    max-width: 860px;
+}
+
+.target-note-strong {
+    font-weight: 700;
+    color: #153356;
+}
+
+.hardware-section {
+    padding-top: 46px;
+}
+
+.hardware-grid {
+    align-items: stretch;
+}
+
+.hardware-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.hardware-list {
+    margin-top: 14px;
+    padding-left: 20px;
+    color: #2f4f72;
+}
+
+.hardware-list li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.hardware-disclaimer {
+    margin-top: 22px;
+    text-align: center;
+    color: #4a6080;
+    font-size: 0.92rem;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hardware-table-wrap {
+    margin-top: 26px;
+}
+
+.hardware-table-title {
+    text-align: center;
+    color: #1E3C72;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.hardware-table-scroll {
+    overflow-x: auto;
+}
+
+.hardware-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #e2edf2;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+}
+
+.hardware-table th,
+.hardware-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2f8;
+    text-align: left;
+    vertical-align: top;
+    color: #1f3854;
+    font-size: 0.92rem;
+}
+
+.hardware-table th {
+    background: #f5f8ff;
+    color: #153356;
+    font-weight: 700;
+}
+
+.hardware-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .section-header {
     text-align: center;
     max-width: 720px;
@@ -497,6 +627,12 @@ footer {
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.3rem; }
     .hero-grid { flex-direction: column; }
+    .target-note-section { padding-top: 18px; }
+    .target-note-card { padding: 24px 20px; border-radius: 24px; }
+    .target-note-card h2 { font-size: 1.5rem; }
+    .target-note-card p { font-size: 0.98rem; }
+    .hardware-section { padding-top: 28px; }
+    .hardware-table-title { text-align: left; }
     .footer-flex { flex-direction: column; align-items: center; text-align: center; }
     .footer-links a { margin: 0 12px; }
     .modal-content { padding: 40px 24px; }
