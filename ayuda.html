@@ -90,13 +90,13 @@
                 <a href="#ollama" class="choice-card choice-card--local">
                     <div class="choice-icon"><i class="fas fa-lock"></i></div>
                     <h3>Quiero privacidad total</h3>
-                    <p>Ollama · Todo se procesa en tu ordenador. Sin cuentas, sin API keys, sin costes por uso. Necesitas un PC con al menos 8 GB de RAM.</p>
+                    <p>Ollama · Todo se procesa en tu ordenador. Sin cuentas, sin API keys, sin costes por uso. Necesitas un PC con al menos 16 GB de RAM.</p>
                     <span class="choice-tag">Recomendado para privacidad</span>
                 </a>
                 <a href="#openai" class="choice-card choice-card--cloud">
                     <div class="choice-icon" style="background:#10a37f22; color:#10a37f;"><i class="fas fa-bolt"></i></div>
                     <h3>Quiero la mejor calidad</h3>
-                    <p>OpenAI GPT-4.1 · Modelos de mayor capacidad. Requiere crear una cuenta y añadir método de pago. Pago por uso.</p>
+                    <p>OpenAI GPT-5.x · Modelos de mayor capacidad. Requiere crear una cuenta y añadir método de pago. Pago por uso.</p>
                     <span class="choice-tag" style="background:#10a37f22; color:#10a37f;">Mejor calidad general</span>
                 </a>
                 <a href="#claude" class="choice-card">
@@ -147,7 +147,7 @@
                 <div class="req-grid">
                     <div class="req-item req-ok">
                         <i class="fas fa-memory"></i>
-                        <span><strong>8 GB RAM</strong> mínimo<br><small>16 GB recomendado</small></span>
+                        <span><strong>16 GB RAM</strong> mínimo<br><small>32 GB recomendado</small></span>
                     </div>
                     <div class="req-item req-ok">
                         <i class="fas fa-hdd"></i>
@@ -338,7 +338,7 @@
                     <i class="fas fa-robot"></i>
                 </div>
                 <div>
-                    <h2>OpenAI · GPT-4.1</h2>
+                    <h2>OpenAI · GPT-5.x</h2>
                     <p>El proveedor más popular. Excelente equilibrio entre calidad, velocidad y facilidad de uso.</p>
                 </div>
             </div>
@@ -412,7 +412,7 @@
                             </div>
                             <div class="config-row">
                                 <span class="config-label">Modelo LLM</span>
-                                <span class="config-value"><code>gpt-4.1-mini</code> (recomendado)</span>
+                                <span class="config-value"><code>gpt-5-mini</code> (recomendado)</span>
                             </div>
                             <div class="config-row">
                                 <span class="config-label">API Key OpenAI</span>
@@ -428,22 +428,19 @@
                             </div>
                         </div>
                         <div class="model-options" style="margin-top:20px;">
-                            <h5><i class="fas fa-th-list"></i> Modelos LLM de OpenAI disponibles</h5>
+                            <h5><i class="fas fa-th-list"></i> Modelos LLM objetivo de OpenAI</h5>
                             <div class="model-table">
                                 <div class="model-row model-row--header">
                                     <span>Modelo</span><span>Velocidad</span><span>Coste</span><span>Calidad</span>
                                 </div>
                                 <div class="model-row model-row--recommended">
-                                    <span><code>gpt-4.1-mini</code> ⭐</span><span>Rápido</span><span>Muy bajo</span><span class="quality-bar quality-bar--4">●●●●○</span>
+                                    <span><code>gpt-5-mini</code> ⭐</span><span>Rápido</span><span>Bajo</span><span class="quality-bar quality-bar--4">●●●●○</span>
                                 </div>
                                 <div class="model-row">
-                                    <span><code>gpt-4.1</code></span><span>Normal</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
+                                    <span><code>gpt-5.2</code></span><span>Normal</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
                                 </div>
                                 <div class="model-row">
-                                    <span><code>gpt-4o</code></span><span>Rápido</span><span>Medio</span><span class="quality-bar quality-bar--5">●●●●●</span>
-                                </div>
-                                <div class="model-row">
-                                    <span><code>gpt-4o-mini</code></span><span>Muy rápido</span><span>Muy bajo</span><span class="quality-bar quality-bar--3">●●●○○</span>
+                                    <span><code>gpt-5</code></span><span>Normal</span><span>Alto</span><span class="quality-bar quality-bar--5">●●●●●</span>
                                 </div>
                             </div>
                         </div>
@@ -532,7 +529,7 @@
                             </div>
                         </div>
                         <div class="model-options" style="margin-top:20px;">
-                            <h5><i class="fas fa-th-list"></i> Modelos Claude disponibles</h5>
+                            <h5><i class="fas fa-th-list"></i> Modelos Claude objetivo</h5>
                             <div class="model-table">
                                 <div class="model-row model-row--header">
                                     <span>Modelo</span><span>Ventana contexto</span><span>Coste</span><span>Uso ideal</span>
@@ -541,10 +538,10 @@
                                     <span><code>claude-sonnet-4-5</code> ⭐</span><span>200K tokens</span><span>Medio</span><span style="font-size:0.82em;">Uso general</span>
                                 </div>
                                 <div class="model-row">
-                                    <span><code>claude-haiku-3-5</code></span><span>200K tokens</span><span>Bajo</span><span style="font-size:0.82em;">Rápido y barato</span>
+                                    <span><code>claude-haiku-3-5</code></span><span>200K tokens</span><span>Bajo</span><span style="font-size:0.82em;">Rápido y económico</span>
                                 </div>
                                 <div class="model-row">
-                                    <span><code>claude-opus-4</code></span><span>200K tokens</span><span>Alto</span><span style="font-size:0.82em;">Máxima calidad</span>
+                                    <span><code>claude-opus-4-1</code></span><span>200K tokens</span><span>Alto</span><span style="font-size:0.82em;">Máxima calidad</span>
                                 </div>
                             </div>
                         </div>
