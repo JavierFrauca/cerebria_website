@@ -26,7 +26,6 @@
         <div class="nav-links">
             <a href="#features">Características</a>
             <a href="#providers">Proveedores</a>
-            <a href="#hardware">Hardware</a>
             <a href="#ragengine">Motor RAG</a>
             <a href="#syncwatch">Sincronización</a>
             <a href="ayuda.html"><i class="fas fa-book-open" style="margin-right:5px;"></i>Ayuda</a>
@@ -190,93 +189,6 @@
         </div>
     </section>
 
-    <!-- Hardware sugerido -->
-    <section id="hardware" class="section hardware-section">
-        <div class="container">
-            <div class="section-header">
-                <h2><i class="fas fa-microchip" style="margin-right: 12px;"></i> Hardware sugerido</h2>
-                <p>Guia realista para ejecutar CerebrIA en local segun el tamano de modelo que quieras usar.</p>
-            </div>
-            <div class="features-grid hardware-grid">
-                <div class="feature-card hardware-card">
-                    <div class="feature-icon"><i class="fas fa-gauge-low"></i></div>
-                    <h3>Minimo funcional (7B)</h3>
-                    <p>Por debajo de 7B no lo recomendamos para uso real: la calidad cae demasiado en tareas RAG.</p>
-                    <ul class="hardware-list">
-                        <li>CPU: 8-12 nucleos modernos (o superior)</li>
-                        <li>RAM: 32 GB minimo</li>
-                        <li>GPU opcional: 8-12 GB VRAM mejora mucho la latencia</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card hardware-card">
-                    <div class="feature-icon"><i class="fas fa-gauge"></i></div>
-                    <h3>Recomendado (20B-27B)</h3>
-                    <p>Para modelos tipo <code>gpt-oss:20b</code> o <code>Qwen3 27B</code> en cuantizacion, esta es la zona objetivo.</p>
-                    <ul class="hardware-list">
-                        <li>GPU: 16 GB VRAM minimo</li>
-                        <li>NVIDIA sugerida: RTX 5060 Ti 16 GB</li>
-                        <li>AMD valida: RX 9070 (y superiores)</li>
-                        <li>RAM del sistema: 32-64 GB recomendada</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card hardware-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Alto rendimiento (fuera del target)</h3>
-                    <p>Si buscas maxima fluidez y margen para contextos largos, el salto es claro pero ya se sale del publico objetivo de bajo presupuesto.</p>
-                    <ul class="hardware-list">
-                        <li>GPU: RTX 4090 o RX 7900 XTX</li>
-                        <li>RAM: 64 GB ideal</li>
-                        <li>Mejor experiencia para sesiones largas y concurrencia</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="hardware-table-wrap">
-                <h3 class="hardware-table-title">Resumen rapido por perfil</h3>
-                <div class="hardware-table-scroll">
-                    <table class="hardware-table">
-                        <thead>
-                            <tr>
-                                <th>Perfil</th>
-                                <th>Modelo objetivo</th>
-                                <th>VRAM sugerida</th>
-                                <th>RAM sugerida</th>
-                                <th>Experiencia esperada</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Minimo</td>
-                                <td>7B cuantizado</td>
-                                <td>8-12 GB (opcional)</td>
-                                <td>32 GB</td>
-                                <td>Funcional, con latencia variable</td>
-                            </tr>
-                            <tr>
-                                <td>Recomendado</td>
-                                <td><code>gpt-oss:20b</code> / Qwen3 27B (cuantizado)</td>
-                                <td>16 GB</td>
-                                <td>32-64 GB</td>
-                                <td>Buen equilibrio calidad/velocidad</td>
-                            </tr>
-                            <tr>
-                                <td>Alto rendimiento</td>
-                                <td>20B-27B holgado + contexto largo</td>
-                                <td>24 GB+</td>
-                                <td>64 GB</td>
-                                <td>Fluidez alta y mejor concurrencia</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <p class="hardware-disclaimer">
-                <i class="fas fa-circle-info"></i> Nota: el rendimiento real depende de cuantizacion, contexto, proveedor de inferencia y backend usado. En Windows, NVIDIA suele ofrecer la ruta mas estable; AMD funciona bien, pero conviene validar el stack exacto antes de compra.
-            </p>
-        </div>
-    </section>
-
     <!-- Motor RAG detallado -->
     <section id="ragengine" class="section">
         <div class="container">
@@ -428,7 +340,6 @@
                 <a href="#">Inicio</a>
                 <a href="#features">Características</a>
                 <a href="#providers">Proveedores</a>
-                <a href="#hardware">Hardware</a>
                 <a href="#ragengine">Motor RAG</a>
                 <a href="#syncwatch">Sincronización</a>
                 <a href="ayuda.html">Ayuda</a>
